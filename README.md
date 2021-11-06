@@ -12,4 +12,4 @@
 
 - React trabalha com funções reativas. Os elementos dentro da função, como h1, div, li, apesar de parecer elementos HTML, na verdade são elementos JSX que em tempo de execução são transpilados para HTML
 
-- Cada componente (função) deve retornar apenas um elemento HTML (JMX). Se tiver mais de um elemento, eles devem estar dentro de uma outra tag para uni-los
+- Cada componente (função) deve retornar apenas um elemento HTML (JMX). Se tiver mais de um elemento, eles devem estar dentro de uma outra tag para uni-los.
