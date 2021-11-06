@@ -10,6 +10,12 @@
 - **react (minusculo):** Biblioteca específica do facebook
 - **React Native:** Próprio para construit aplicativos de celular
 
-- React trabalha com funções reativas. Os elementos dentro da função, como h1, div, li, apesar de parecer elementos HTML, na verdade são elementos JSX que em tempo de execução são transpilados para HTML
+- React trabalha com funções. Os elementos dentro da função, como h1, div, li, apesar de parecer elementos HTML, na verdade são elementos JSX que em tempo de execução são transpilados para HTML
 
 - Cada componente (função) deve retornar apenas um elemento HTML (JMX). Se tiver mais de um elemento, eles devem estar dentro de uma outra tag para uni-los.
+
+- **props:** propriedade passada no construtor de todos os componentes que recebe as propriedades declaradas na sua inicialização
+
+- **setState:** método setter disponibilizado pelo react para que o desenvolvedor modifique o estado de uma propriedade interna de um componente. Internamente o react atualiza e chama o render()
+
+- Método render é gerenciado apenas pelo React e o desenvolvedor não consegue chama-lo
