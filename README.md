@@ -19,3 +19,5 @@
 - **setState:** método setter disponibilizado pelo react para que o desenvolvedor modifique o estado de uma propriedade interna de um componente. Internamente o react atualiza e chama o render()
 
 - Método render é gerenciado apenas pelo React e o desenvolvedor não consegue chama-lo
+
+- Propriedades passadas para os componentes são imutáveis, portanto não podem ser alteradas.
