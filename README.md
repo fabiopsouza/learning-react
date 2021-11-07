@@ -16,8 +16,15 @@
 
 - **props:** propriedade passada no construtor de todos os componentes que recebe as propriedades declaradas na sua inicialização
 
-- **setState:** método setter disponibilizado pelo react para que o desenvolvedor modifique o estado de uma propriedade interna de um componente. Internamente o react atualiza e chama o render()
+- **setState:** método setter disponibilizado pelo react para que o desenvolvedor modifique o estado de uma propriedade interna de um componente. Internamente o react atualiza os outros componentes que usam esse estate chamando o método render de cada um
+
+- Apesar de existir essa funcionalidade state, deve-se tomar cuidado por que, sempre que um render é chamado, acaba renderizando os filhos então esse set pode acabar causando uma renderização de partes muito grandes da tela, ou até mesmo a tela toda.
+- Uma alternativa é utilizar o padrão Observable, como por exemplo na classe src/dados/Categorias.js. Nele, você gerencia os eventos de mudança e atualiza o setState manualmente apenas dos componentes necessários
 
 - Método render é gerenciado apenas pelo React e o desenvolvedor não consegue chama-lo
 
 - Propriedades passadas para os componentes são imutáveis, portanto não podem ser alteradas.
+
+- **bind(instanciaQueDeveCorresponderQuandoChamarOThis):** Atenção com o bind. É comum ter problemas relacionados a isso por que o react não passa a referencia da instancia por parâmetro e sim uma cópia.
+
+- **bind:** recebe uma função como parâmetro e retorna uma nova função
