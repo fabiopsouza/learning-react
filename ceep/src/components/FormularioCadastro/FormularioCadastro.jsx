@@ -1,39 +1,56 @@
 import React, { Component } from "react";
 import "./estilo.css";
 class FormularioCadastro extends Component {
-
   constructor(props) {
     super(props); //required
     this.titulo = "";
     this.texto = "";
+    this.categoria = "Sem Categoria";
   }
 
-  _handleMudancaDeTitulo(evento){
+  _handleMudancaDeTitulo(evento) {
     evento.stopPropagation();
     this.titulo = evento.target.value;
   }
 
-  _handleMudancaDeTexto(evento){
+  _handleMudancaDeTexto(evento) {
     evento.stopPropagation();
     this.texto = evento.target.value;
   }
 
-  _criarNota(evento){
+  _handleMudancaDeCategoria(evento) {
+    evento.stopPropagation();
+    this.categoria = evento.target.value;
+  }
+
+  _criarNota(evento) {
     evento.preventDefault();
     evento.stopPropagation();
-    this.props.criarNota(this.titulo, this.texto);
+    this.props.criarNota(this.titulo, this.texto, this.categoria);
   }
 
   render() {
     return (
-      <form className="form-cadastro"
+      <form 
+        className="form-cadastro" 
         onSubmit={this._criarNota.bind(this)}>
+
+        <select
+          className="form-cadastro_input"
+          onChange={this._handleMudancaDeCategoria.bind(this)}>
+            
+          <option>Sem Categoria</option>
+          {this.props.categorias.map((categoria, index) => {
+            return <option key={index}>{categoria}</option>;
+          })}
+        </select>
+
         <input
           type="text"
           placeholder="Título"
           className="form-cadastro_input"
-          onChange={this._handleMudancaDeTitulo.bind(this)} //Passa uma nova referência da função 
-            //e não a que está na instância dessa classe. Por isso precisa do bind(this)
+          onChange={this._handleMudancaDeTitulo.bind(this)} //Passa uma nova referência da função
+          //e não a que está na instância dessa classe. Por isso precisa do bind(this)
         />
         <textarea
           rows={15}
