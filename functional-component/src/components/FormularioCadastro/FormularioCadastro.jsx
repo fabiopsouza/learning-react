@@ -1,27 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button, FormControlLabel, Switch, TextField } from "@material-ui/core";
 
 function FormularioCadastro() {
 
-    return (
-        <form>
-            <label>Nome</label>
-            <input type="text" />
+  // retorna array com variavel e funcao usada para atribuir o valor
+  const [nome, setNome] = useState("");
+  const [sobrenome, setSobrenome] = useState("");
+  const [cpf, setCpf] = useState("");
 
-            <label>Sobrenome</label>
-            <input type="text" />
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        console.log(nome);
+      }}>
 
-            <label>CPF</label>
-            <input type="text" />
+      <TextField
+        value={nome}
+        onChange={(event) => setNome(event.target.value)}
+        id="nome"
+        label="Nome"
+        variant="outlined"
+        margin="normal"
+        fullWidth
+      />
+      <TextField
+        value={sobrenome}
+        onChange={(event) => setSobrenome(event.target.value)}
+        id="sobrenome"
+        label="Sobrenome"
+        variant="outlined"
+        margin="normal"
+        fullWidth
+      />
+      <TextField
+        value={cpf}
+        onChange={(event) => setCpf(event.target.value)}
+        id="cpf"
+        label="CPF"
+        variant="outlined"
+        margin="normal"
+        fullWidth
+      />
 
-            <label>Promoções</label>
-            <input type="checkbox" />
+      <FormControlLabel
+        label="Promoções"
+        control={<Switch name="promocoes" defaultChecked color="primary" />}
+      />
 
-            <label>Novidades</label>
-            <input type="checkbox" />
+      <FormControlLabel
+        label="Novidades"
+        control={<Switch name="novidades" defaultChecked color="primary" />}
+      />
 
-            <button type="submit">Cadastrar</button>
-        </form>
-    );
+      <Button type="submit" variant="contained" color="primary">
+        Cadastrar
+      </Button>
+    </form>
+  );
 }
 
 export default FormularioCadastro;
