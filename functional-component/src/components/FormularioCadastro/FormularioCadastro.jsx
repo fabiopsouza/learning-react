@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { Button, FormControlLabel, Switch, TextField } from "@material-ui/core";
 
-function FormularioCadastro() {
+function FormularioCadastro({aoEnviar}) { // Isso desconstroi o PROPS que é o primeiro argumento por padrão
+  // É o mesmo que: aoEnviar = props.aoEnviar
 
   // retorna array com variavel e funcao usada para atribuir o valor
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [cpf, setCpf] = useState("");
+  const [promocoes, setPromocoes] = useState(true);
+  const [novidades, setNovidades] = useState(true);
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        console.log(nome);
+        aoEnviar({nome, sobrenome, cpf, promocoes, novidades});
       }}>
 
       <TextField
@@ -45,12 +48,26 @@ function FormularioCadastro() {
 
       <FormControlLabel
         label="Promoções"
-        control={<Switch name="promocoes" defaultChecked color="primary" />}
+        control={
+          <Switch
+            name="promocoes"
+            checked={promocoes}
+            onChange={(event) => setPromocoes(event.target.checked)}
+            defaultChecked={promocoes} 
+            color="primary" />
+        }
       />
 
       <FormControlLabel
         label="Novidades"
-        control={<Switch name="novidades" defaultChecked color="primary" />}
+        control={
+          <Switch
+            name="novidades"
+            checked={novidades}
+            onChange={(event) => setNovidades(event.target.checked)}
+            defaultChecked={novidades} 
+            color="primary" />
+        }
       />
 
       <Button type="submit" variant="contained" color="primary">
